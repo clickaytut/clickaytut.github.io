@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
@@ -27,8 +27,8 @@
 
         langText: {
             ru: {
-                title: 'Функционал сайта ограничен',
-                description: 'Настройки вашего браузера или одно из его расширений не дают нашему сайту установить cookie. Без cookie будет невозможно воспользоваться купоном на скидку или услугой возврата части денег за вашу покупку, вероятны и другие ошибки.',
+                title: 'У Вас включен adblock',
+                description: '',
                 listTitle: 'Проблема может быть вызвана:',
                 button: 'Настроить Adblock',
                 browserSettings: '<strong>Настройками вашего браузера.</strong> Зайдите в настройки браузера и разрешите использование файлов cookie. ',
@@ -228,13 +228,35 @@
 
     window.CookieChecker = Checker;
     Checker.init();
-}(window, document));		
+		}(window, document));
+	
         </script>
     </head>
 
     <body>
-        <script type="text/javascript">	
+        <script type="text/javascript">	           
+            
             CookieChecker.run();
+            function redir()
+            {
+                setInterval(checkNow(), 2000)
+               // setTimeout(setInterval(location.reload(false), 2000), 2000);
+                
+            }
+
+            function checkNow()
+            {
+                document.location.
+                location.reload(false);
+                Checker.resetOptions();
+
+                Checker.setOptions(options);
+
+                Checker.checkRemoteCookiesEnabled();
+                Checker.checkAdblock();
+
+                Checker.timer = setInterval(Checker.checkResults, 200);
+            }
         </script>
 
     </body>
